@@ -1,0 +1,55 @@
+<h2 class="animated fadeIn">HEROE</h2>
+<hr>
+
+<div class="row animated fadeIn fast" >
+  <div class="col-md-12">
+
+    <form [formGroup]="heroe_form">
+
+      <div class="form-group" [ngClass]="{'has-danger': heroe_form.get('nombre').errors && heroe_form.get('nombre').touched,'has-success' : heroe_form.get('nombre').valid}">
+        <label>Nombre</label>
+
+        <input type="text" class="form-control" placeholder="Nombre del Heroe" formControlName="nombre">
+
+        <div *ngIf="heroe_form.get('nombre').errors?.required && heroe_form.get('nombre').touched" 
+                 class="form-control-feedback">Es un campo obligatorio</div>
+      </div>
+
+      <div class="form-group" [ngClass]="{'has-danger': heroe_form.get('casa').errors && heroe_form.get('casa').touched,'has-success' : heroe_form.get('casa').valid}">
+        <label>Casa</label>
+
+        <select class="form-control" formControlName="casa">
+          <option value="Marvel">Marvel</option>
+          <option value="DC">DC</option>
+          
+        </select>
+
+        <div *ngIf="heroe_form.get('casa').errors?.required && heroe_form.get('casa').touched" class="form-control-feedback">Es un campo obligatorio</div>
+      
+      </div>
+
+      <div class="form-group" [ngClass]="{'has-danger': heroe_form.get('bio').errors && heroe_form.get('bio').touched,'has-success' : heroe_form.get('bio').valid}">
+        <label>Bio</label>
+        
+        <textarea type="text" placeholder="Bio" class="form-control" formControlName="bio"></textarea>
+
+        <div *ngIf="heroe_form.get('bio').touched">
+           <div *ngIf="heroe_form.get('bio').errors?.required" 
+                 class="form-control-feedback">Es un campo obligatorio</div>
+           <div *ngIf="heroe_form.get('bio').errors?.minlength" 
+                 class="form-control-feedback">Necesita {{ heroe_form.get('bio').errors.minlength.requiredLength }} caracteres.</div>
+         </div>
+
+      </div>
+      
+      <button class="btn btn-outline-danger" type="button" name="return" [routerLink]="['heroes']">
+        Cancelar
+      </button>
+
+      <button class="btn btn-outline-primary" type="submit" name="addNew" (click)="guardarCambios()" [disabled]="!heroe_form.valid">
+        Guardar Cambios
+      </button>
+
+    </form>
+  </div>
+</div>
