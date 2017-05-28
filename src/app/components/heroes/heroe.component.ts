@@ -14,12 +14,6 @@ import { HeroeService } from './../../services/heroe.service';
 
 export class HeroeComponent implements OnInit {
 
-  private heroe: Hero = {
-    nombre: '',
-    casa: '',
-    bio: ''
-  };
-
   nuevo = false;
   id;
 
@@ -35,15 +29,14 @@ export class HeroeComponent implements OnInit {
           if (this.id !== 'nuevo') {
             this._heroeService.getheroe( this.id )
               .subscribe( heroe => {
-                // console.log(this.heroe);
-                // console.log(heroe);
+                this.heroe_form.setValue(heroe);
               });
           }
       });
 
     this.heroe_form = new FormGroup({
       nombre: new FormControl('', Validators.required),
-      casa: new FormControl('', Validators.required),
+      casa: new FormControl('Marvel', Validators.required),
       bio: new FormControl('')
     });
   }
@@ -73,6 +66,16 @@ export class HeroeComponent implements OnInit {
 
    }
 
+  }
+
+  // Para redireccionarnos a una nueva pestaña y seleccionar un nuevo heroe
+  agregarNuevo() {
+    this._router.navigate(['/heroe', 'nuevo']);
+    this.heroe_form.reset({
+      nombre: '',
+      casa: 'Marvel',
+      bio: ''
+    });
   }
 
 }

@@ -1,5 +1,16 @@
 <h2 class="animated fadeIn">HEROE</h2>
+
 <hr>
+
+<div class="button-margin">
+  <button class="btn btn-outline-danger" type="button" name="return" [routerLink]="['heroes']">
+    Cancelar
+  </button>
+
+  <button class="btn btn-outline-success" type="button" name="return" (click)="agregarNuevo()">
+    Nuevo
+  </button>
+</div>
 
 <div class="row animated fadeIn fast" >
   <div class="col-md-12">
@@ -35,14 +46,12 @@
 
       </div>
       
-      <button class="btn btn-outline-danger" type="button" name="return" [routerLink]="['heroes']">
-        Cancelar
-      </button>
-
-      <button class="btn btn-outline-primary" type="submit" name="addNew" (click)="guardarCambios()" [disabled]="!heroe_form.valid">
+      <button class="btn btn-outline-primary" type="submit" name="addNew" [disabled]="!heroe_form.valid">
         Guardar Cambios
       </button>
 
     </form>
+
   </div>
+
 </div>
