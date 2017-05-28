@@ -57,4 +57,15 @@ export class HeroeService {
 
   }
 
+  borrarheroe(key$: string) {
+
+    let url = `${ this.heroeURL }/${ key$ }.json`;
+
+    return this.http.delete( url )
+      .map(res => {
+        // console.log(res);
+        return res.json();
+      })
+  }
+
 }
