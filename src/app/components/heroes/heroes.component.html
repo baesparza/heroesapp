@@ -42,5 +42,13 @@
       </table>
 
     </div>
+
+    <div class="alert alert-info" role="alert" *ngIf="(heroes | keys).length === 0 && !loading">
+      <strong>No hay</strong> Registros que mostrar.
+    </div>
+
+    <div class="alert alert-warning" role="alert" *ngIf="loading">
+      <strong>Cargando...</strong> Por favor espere
+    </div>
   </div>
 </div>

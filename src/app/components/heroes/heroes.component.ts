@@ -12,12 +12,15 @@ export class HeroesComponent implements OnInit {
 
   private heroes: any[] = [];
 
+  private loading: boolean = true;
+
   constructor(private _heroeService: HeroeService) {
 
     this._heroeService.getheroes()
       .subscribe(data => {
         this.heroes = data;
         // console.log(this.heroes);
+        this.loading = false;
       });
   }
 
