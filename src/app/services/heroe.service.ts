@@ -50,4 +50,11 @@ export class HeroeService {
 
   }
 
+  getheroes() {
+
+    return this.http.get( this.heroesURL )
+      .map( res => res.json() );
+
+  }
+
 }
