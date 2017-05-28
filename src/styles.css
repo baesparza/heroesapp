@@ -12,6 +12,10 @@
   width: 120px;
 }
 
+.button-margin{
+  margin-bottom: 15px;
+}
+
 /* Animaciones */
 .animated {
   -webkit-animation-duration: 1s;
