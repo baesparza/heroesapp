@@ -4,7 +4,7 @@
 <div class="row animated fadeIn fast" >
   <div class="col-md-12">
 
-    <form [formGroup]="heroe_form">
+    <form [formGroup]="heroe_form" (ngSubmit)="guardarCambios()">
 
       <div class="form-group" [ngClass]="{'has-danger': heroe_form.get('nombre').errors && heroe_form.get('nombre').touched,'has-success' : heroe_form.get('nombre').valid}">
         <label>Nombre</label>
@@ -28,17 +28,10 @@
       
       </div>
 
-      <div class="form-group" [ngClass]="{'has-danger': heroe_form.get('bio').errors && heroe_form.get('bio').touched,'has-success' : heroe_form.get('bio').valid}">
+      <div class="form-group">
         <label>Bio</label>
         
-        <textarea type="text" placeholder="Bio" class="form-control" formControlName="bio"></textarea>
-
-        <div *ngIf="heroe_form.get('bio').touched">
-           <div *ngIf="heroe_form.get('bio').errors?.required" 
-                 class="form-control-feedback">Es un campo obligatorio</div>
-           <div *ngIf="heroe_form.get('bio').errors?.minlength" 
-                 class="form-control-feedback">Necesita {{ heroe_form.get('bio').errors.minlength.requiredLength }} caracteres.</div>
-         </div>
+        <textarea type="text" class="form-control" formControlName="bio"></textarea>
 
       </div>
       
